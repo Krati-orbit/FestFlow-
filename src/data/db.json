@@ -1,0 +1,133 @@
+{
+  "users": [
+    {
+      "id": "alex-mercer",
+      "email": "alex@university.edu",
+      "name": "Alex Mercer",
+      "role": "STUDENT"
+    },
+    {
+      "id": "sarah-jones",
+      "email": "sarah@university.edu",
+      "name": "Sarah Jones",
+      "role": "ORGANIZER"
+    },
+    {
+      "id": "dean-harrison",
+      "email": "dean@university.edu",
+      "name": "Dean Harrison",
+      "role": "ADMIN"
+    },
+    {
+      "id": "marcus-brody",
+      "email": "marcus@university.edu",
+      "name": "Marcus Brody",
+      "role": "VOLUNTEER"
+    },
+    {
+      "id": "lily-evans",
+      "email": "lily@university.edu",
+      "name": "Lily Evans",
+      "role": "STUDENT"
+    }
+  ],
+  "events": [
+    {
+      "id": "euphoria-2026",
+      "title": "Euphoria 2026",
+      "description": "The ultimate cultural showcase featuring 20+ competitions, live concerts, and food stalls. Get ready for an action-packed 3 days of dance, music, drama, and photography events hosted across campus. Grand prize pool worth ₹1,00,000!",
+      "category": "Cultural",
+      "date": "2026-07-24",
+      "time": "18:00",
+      "venue": "Main Campus Arena, University Grounds",
+      "price": 199,
+      "capacity": 500,
+      "status": "Active",
+      "organizerId": "sarah-jones"
+    },
+    {
+      "id": "hackanation-2026",
+      "title": "Hack-A-Nation 2026",
+      "description": "A 36-hour hackathon for student developers to build software and hardware solutions for real-world industry challenges. Work in teams of up to 4, receive guidance from expert mentors, and compete for internship offers and cash prizes.",
+      "category": "Tech",
+      "date": "2026-08-05",
+      "time": "09:00",
+      "venue": "CS Innovation Hub, Block 4",
+      "price": 0,
+      "capacity": 200,
+      "status": "Active",
+      "organizerId": "sarah-jones"
+    },
+    {
+      "id": "venture-summit-2026",
+      "title": "Venture Summit 2026",
+      "description": "Connect with young entrepreneurs, pitch your startup ideas, and learn from industry leaders. This 2-day event includes panel discussions, interactive workshops on business modeling, and networking sessions with seed funding investors.",
+      "category": "Business",
+      "date": "2026-08-12",
+      "time": "10:00",
+      "venue": "Business School Annex Auditorium",
+      "price": 299,
+      "capacity": 150,
+      "status": "Active",
+      "organizerId": "sarah-jones"
+    },
+    {
+      "id": "spardha-sports-2026",
+      "title": "Spardha Sports Fest",
+      "description": "Annual inter-college sports championship covering football, basketball, and track events.",
+      "category": "Sports",
+      "date": "2026-09-02",
+      "time": "08:00",
+      "venue": "Sports Complex",
+      "price": 99,
+      "capacity": 300,
+      "status": "Active",
+      "organizerId": "sarah-jones"
+    },
+    {
+      "id": "zenith-art-pending",
+      "title": "Zenith Art & Lit Fest",
+      "description": "A campus-wide creative showdown for painters, poets, and writers.",
+      "category": "Cultural",
+      "date": "2026-10-15",
+      "time": "10:00",
+      "venue": "Campus Art Gallery",
+      "price": 49,
+      "capacity": 120,
+      "status": "Pending",
+      "organizerId": "sarah-jones"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg-1",
+      "userId": "alex-mercer",
+      "eventId": "hackanation-2026",
+      "ticketId": "TICKET-TECH-7729-XX",
+      "studentName": "Alex Mercer",
+      "amount": 0,
+      "createdAt": "2026-06-30T10:00:00.000Z",
+      "scanned": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Confirm Guest Speaker",
+      "event": "AI Ethics Seminar",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "text": "Finalize Catering",
+      "event": "Winter Gala 2026",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "text": "Publish Event Page",
+      "event": "Hackathon V3",
+      "completed": true
+    }
+  ]
+}

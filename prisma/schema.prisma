@@ -1,0 +1,101 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  STUDENT
+  ORGANIZER
+  ADMIN
+}
+
+enum EventStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  CAPTURED
+  FAILED
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String?
+  password      String?        // for credentials signin
+  role          Role           @default(STUDENT)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  
+  registrations Registration[]
+  eventsCreated Event[]        // if role is ORGANIZER
+}
+
+model Event {
+  id            String         @id @default(uuid())
+  title         String
+  description   String
+  bannerUrl     String?
+  category      String
+  date          DateTime
+  time          String
+  venue         String?
+  capacity      Int            @default(100)
+  price         Float          @default(0.0) // 0.0 for free
+  status        EventStatus    @default(DRAFT)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  organizerId   String
+  organizer     User           @relation(fields: [organizerId], references: [id])
+  
+  registrations Registration[]
+}
+
+model Registration {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  eventId     String
+  event       Event         @relation(fields: [eventId], references: [id])
+  createdAt   DateTime      @default(now())
+  
+  payment     Payment?
+  ticket      Ticket?
+  certificate Certificate?
+}
+
+model Payment {
+  id             String        @id @default(uuid())
+  registrationId String        @unique
+  registration   Registration  @relation(fields: [registrationId], references: [id])
+  amount         Float
+  status         PaymentStatus @default(PENDING)
+  razorpayOrderId String?
+  razorpayPaymentId String?
+  createdAt      DateTime      @default(now())
+}
+
+model Ticket {
+  id             String       @id @default(uuid())
+  registrationId String       @unique
+  registration   Registration @relation(fields: [registrationId], references: [id])
+  qrCodePayload  String       // JSON or unique string containing ticket info for check-in
+  scannedAt      DateTime?    // Null if not scanned yet
+  createdAt      DateTime     @default(now())
+}
+
+model Certificate {
+  id             String       @id @default(uuid())
+  registrationId String       @unique
+  registration   Registration @relation(fields: [registrationId], references: [id])
+  certificateUrl String       // Cloudinary url for certificate
+  createdAt      DateTime     @default(now())
+}
